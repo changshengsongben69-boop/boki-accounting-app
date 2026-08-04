@@ -1,0 +1,65 @@
+# 用語辞書 — 基本勘定（現金・売掛金・仕入など）
+terms:
+  - id: gen-1-cash
+    headword: 現金
+    reading: げんきん
+    topics: [BK-1-03-01]
+    definition: |
+      企業が保有する現金・預金のうち、手元で保有する通貨を指す。流動資産に分類される。
+    body: |
+      現金は流動性が最も高い資産であり、受取・支払の取引によって増減する。
+
+  - id: gen-2-ar
+    headword: 売掛金
+    reading: うりかけきん
+    topics: [BK-1-03-01,BK-2-01-01]
+    definition: |
+      商品を掛けで販売した際に発生する債権。流動資産に分類される。
+    body: |
+      売掛金は売上の発生と同時に計上され、回収時に普通預金や現金へ振り替える。
+
+  - id: gen-3-inv
+    headword: 仕入
+    reading: しいれ
+    topics: [BK-2-07-01,BK-2-10-01]
+    definition: |
+      商品や製品を事業の販売目的で仕入れたときに計上する費用または費用の前段階としての勘定。
+    body: |
+      仕入は売上原価に配分される。期末における在庫評価により費用計上額が変動する。
+
+  - id: gen-4-ap
+    headword: 買掛金
+    reading: かいかけきん
+    topics: [BK-2-07-01]
+    definition: |
+      掛け仕入により発生する債務。支払時に現金や普通預金で清算する。
+
+  - id: gen-5-sales
+    headword: 売上
+    reading: うりあげ
+    topics: [BK-2-01-01]
+    definition: |
+      商品やサービスの提供により企業が得る収益。損益計算書の収益に該当する。
+
+  - id: gen-6-depr
+    headword: 減価償却費
+    reading: げんかしょうきゃくひ
+    topics: [BK-3-08-01]
+    definition: |
+      有形固定資産の取得原価を耐用年数にわたり配分する費用。
+    body: |
+      減価償却費は損益計算書の費用として計上され、貸借対照表では累計額として控除される。
+
+  - id: gen-7-accum-depr
+    headword: 減価償却累計額
+    reading: げんかしょうきゃくるいけいがく
+    topics: [BK-3-08-01]
+    definition: |
+      減価償却の累積額を示す帳簿勘定。簿外或いは控除表示されることがある。
+
+  - id: gen-8-futsu-yokin
+    headword: 普通預金
+    reading: ふつうよきん
+    topics: [BK-1-03-01]
+    definition: |
+      銀行に預けた普通預金口座の残高を示す資産勘定。

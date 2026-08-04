@@ -1,0 +1,2303 @@
+format: journal
+topic_default: BK-1-03-01
+questions:
+- id: GEN-J-001
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金20000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 20000
+    credit:
+    - account: 売上
+      amount: 20000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-002
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金30000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 30000
+    credit:
+    - account: 売上
+      amount: 30000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-003
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は40000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 40000
+    credit:
+    - account: 現金
+      amount: 40000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-004
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金50000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 50000
+    credit:
+    - account: 買掛金
+      amount: 50000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-005
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として60000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 60000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 60000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-006
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金70000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 70000
+    credit:
+    - account: 売上
+      amount: 70000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-007
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金80000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 80000
+    credit:
+    - account: 売上
+      amount: 80000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-008
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は90000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 90000
+    credit:
+    - account: 現金
+      amount: 90000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-009
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金10000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 10000
+    credit:
+    - account: 買掛金
+      amount: 10000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-010
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として20000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 20000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 20000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-011
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金30000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 30000
+    credit:
+    - account: 売上
+      amount: 30000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-012
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金40000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 40000
+    credit:
+    - account: 売上
+      amount: 40000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-013
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は50000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 50000
+    credit:
+    - account: 現金
+      amount: 50000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-014
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金60000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 60000
+    credit:
+    - account: 買掛金
+      amount: 60000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-015
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として70000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 70000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 70000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-016
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金80000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 80000
+    credit:
+    - account: 売上
+      amount: 80000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-017
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金90000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 90000
+    credit:
+    - account: 売上
+      amount: 90000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-018
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は10000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 10000
+    credit:
+    - account: 現金
+      amount: 10000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-019
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金20000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 20000
+    credit:
+    - account: 買掛金
+      amount: 20000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-020
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として30000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 30000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 30000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-021
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金40000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 40000
+    credit:
+    - account: 売上
+      amount: 40000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-022
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金50000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 50000
+    credit:
+    - account: 売上
+      amount: 50000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-023
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は60000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 60000
+    credit:
+    - account: 現金
+      amount: 60000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-024
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金70000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 70000
+    credit:
+    - account: 買掛金
+      amount: 70000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-025
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として80000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 80000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 80000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-026
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金90000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 90000
+    credit:
+    - account: 売上
+      amount: 90000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-027
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金10000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 10000
+    credit:
+    - account: 売上
+      amount: 10000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-028
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は20000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 20000
+    credit:
+    - account: 現金
+      amount: 20000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-029
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金30000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 30000
+    credit:
+    - account: 買掛金
+      amount: 30000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-030
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として40000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 40000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 40000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-031
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金50000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 50000
+    credit:
+    - account: 売上
+      amount: 50000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-032
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金60000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 60000
+    credit:
+    - account: 売上
+      amount: 60000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-033
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は70000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 70000
+    credit:
+    - account: 現金
+      amount: 70000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-034
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金80000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 80000
+    credit:
+    - account: 買掛金
+      amount: 80000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-035
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として90000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 90000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 90000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-036
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金10000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 10000
+    credit:
+    - account: 売上
+      amount: 10000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-037
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金20000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 20000
+    credit:
+    - account: 売上
+      amount: 20000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-038
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は30000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 30000
+    credit:
+    - account: 現金
+      amount: 30000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-039
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金40000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 40000
+    credit:
+    - account: 買掛金
+      amount: 40000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-040
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として50000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 50000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 50000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-041
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金60000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 60000
+    credit:
+    - account: 売上
+      amount: 60000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-042
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金70000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 70000
+    credit:
+    - account: 売上
+      amount: 70000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-043
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は80000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 80000
+    credit:
+    - account: 現金
+      amount: 80000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-044
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金90000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 90000
+    credit:
+    - account: 買掛金
+      amount: 90000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-045
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として10000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 10000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 10000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-046
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金20000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 20000
+    credit:
+    - account: 売上
+      amount: 20000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-047
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金30000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 30000
+    credit:
+    - account: 売上
+      amount: 30000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-048
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は40000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 40000
+    credit:
+    - account: 現金
+      amount: 40000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-049
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金50000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 50000
+    credit:
+    - account: 買掛金
+      amount: 50000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-050
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として60000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 60000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 60000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-051
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金70000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 70000
+    credit:
+    - account: 売上
+      amount: 70000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-052
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金80000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 80000
+    credit:
+    - account: 売上
+      amount: 80000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-053
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は90000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 90000
+    credit:
+    - account: 現金
+      amount: 90000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-054
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金10000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 10000
+    credit:
+    - account: 買掛金
+      amount: 10000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-055
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として20000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 20000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 20000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-056
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金30000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 30000
+    credit:
+    - account: 売上
+      amount: 30000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-057
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金40000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 40000
+    credit:
+    - account: 売上
+      amount: 40000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-058
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は50000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 50000
+    credit:
+    - account: 現金
+      amount: 50000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-059
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金60000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 60000
+    credit:
+    - account: 買掛金
+      amount: 60000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-060
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として70000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 70000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 70000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-061
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金80000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 80000
+    credit:
+    - account: 売上
+      amount: 80000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-062
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金90000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 90000
+    credit:
+    - account: 売上
+      amount: 90000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-063
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は10000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 10000
+    credit:
+    - account: 現金
+      amount: 10000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-064
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金20000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 20000
+    credit:
+    - account: 買掛金
+      amount: 20000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-065
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として30000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 30000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 30000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-066
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金40000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 40000
+    credit:
+    - account: 売上
+      amount: 40000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-067
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金50000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 50000
+    credit:
+    - account: 売上
+      amount: 50000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-068
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は60000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 60000
+    credit:
+    - account: 現金
+      amount: 60000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-069
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金70000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 70000
+    credit:
+    - account: 買掛金
+      amount: 70000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-070
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として80000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 80000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 80000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-071
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金90000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 90000
+    credit:
+    - account: 売上
+      amount: 90000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-072
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金10000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 10000
+    credit:
+    - account: 売上
+      amount: 10000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-073
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は20000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 20000
+    credit:
+    - account: 現金
+      amount: 20000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-074
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金30000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 30000
+    credit:
+    - account: 買掛金
+      amount: 30000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-075
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として40000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 40000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 40000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-076
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金50000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 50000
+    credit:
+    - account: 売上
+      amount: 50000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-077
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金60000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 60000
+    credit:
+    - account: 売上
+      amount: 60000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-078
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は70000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 70000
+    credit:
+    - account: 現金
+      amount: 70000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-079
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金80000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 80000
+    credit:
+    - account: 買掛金
+      amount: 80000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-080
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として90000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 90000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 90000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-081
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金10000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 10000
+    credit:
+    - account: 売上
+      amount: 10000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-082
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金20000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 20000
+    credit:
+    - account: 売上
+      amount: 20000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-083
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は30000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 30000
+    credit:
+    - account: 現金
+      amount: 30000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-084
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金40000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 40000
+    credit:
+    - account: 買掛金
+      amount: 40000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-085
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として50000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 50000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 50000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-086
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金60000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 60000
+    credit:
+    - account: 売上
+      amount: 60000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-087
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金70000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 70000
+    credit:
+    - account: 売上
+      amount: 70000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-088
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は80000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 80000
+    credit:
+    - account: 現金
+      amount: 80000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-089
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金90000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 90000
+    credit:
+    - account: 買掛金
+      amount: 90000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-090
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として10000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 10000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 10000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-091
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金20000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 20000
+    credit:
+    - account: 売上
+      amount: 20000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-092
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金30000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 30000
+    credit:
+    - account: 売上
+      amount: 30000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-093
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は40000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 40000
+    credit:
+    - account: 現金
+      amount: 40000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-094
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金50000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 50000
+    credit:
+    - account: 買掛金
+      amount: 50000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-095
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として60000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 60000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 60000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
+- id: GEN-J-096
+  topic_id: BK-1-03-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 現金
+  - 売上
+  - 売掛金
+  - 普通預金
+  question: 商品を現金で販売し、代金70000円を受け取った。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 現金
+      amount: 70000
+    credit:
+    - account: 売上
+      amount: 70000
+  explanation: 現金の増加は借方、売上の増加は貸方に記入する。
+- id: GEN-J-097
+  topic_id: BK-2-01-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 売掛金
+  - 売上
+  - 現金
+  - 普通預金
+  question: 商品を掛けで販売し、売掛金80000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 売掛金
+      amount: 80000
+    credit:
+    - account: 売上
+      amount: 80000
+  explanation: 掛け販売では売掛金（資産）が増えるため借方、売上は貸方。
+- id: GEN-J-098
+  topic_id: BK-2-07-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 現金
+  - 買掛金
+  - 普通預金
+  question: 商品を現金で仕入れ、支払額は90000円であった。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 90000
+    credit:
+    - account: 現金
+      amount: 90000
+  explanation: 仕入の増加は借方、現金の減少は貸方で記入する。
+- id: GEN-J-099
+  topic_id: BK-2-10-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 1
+  rows: 2
+  accounts:
+  - 仕入
+  - 買掛金
+  - 現金
+  - 普通預金
+  question: 商品を掛けで仕入れ、買掛金10000円が発生した。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 仕入
+      amount: 10000
+    credit:
+    - account: 買掛金
+      amount: 10000
+  explanation: 掛け仕入では買掛金（負債）が増えるため貸方、仕入は借方で記入する。
+- id: GEN-J-100
+  topic_id: BK-3-08-01
+  exams:
+  - nissho
+  grades:
+  - '3'
+  valid_from: 2027
+  difficulty: 2
+  rows: 2
+  accounts:
+  - 減価償却費
+  - 建物減価償却累計額
+  - 普通預金
+  - 現金
+  question: 建物の期末減価償却費として20000円を計上する。仕訳を示しなさい。
+  answer:
+    debit:
+    - account: 減価償却費
+      amount: 20000
+    credit:
+    - account: 建物減価償却累計額
+      amount: 20000
+  explanation: 減価償却費は費用の計上で借方、累計額で控除するため貸方に計上する。
