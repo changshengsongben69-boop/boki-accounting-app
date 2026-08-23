@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会計理論ドリル</title>
+<style>
+:root{
+  --paper:#EDF1EC; --rule:#BFD0C4; --sumi:#17241D; --shu:#B0322A; --kincha:#8A6D1F;
+  --paper-deep:#E3E9E2; --sumi-thin:#5A6B62;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"MS PMincho",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--sumi);
+  font-family:var(--gothic); font-size:16px; line-height:1.8;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 64px}
+
+/* ---- 見出し ---- */
+header{border-bottom:3px double var(--rule);margin-bottom:16px}
+h1{
+  font-family:var(--mincho); font-size:20px; font-weight:600;
+  letter-spacing:.18em; margin:20px 0 4px;
+}
+.sub{font-size:12px;color:var(--sumi-thin);margin:0 0 16px;letter-spacing:.06em}
+
+/* ---- セクションタブ ---- */
+nav.tabs{
+  display:flex; gap:4px; overflow-x:auto; padding:10px 0;
+  -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+}
+nav.tabs button{
+  flex:0 0 auto; font-family:var(--gothic); font-size:13px;
+  padding:7px 12px; border:1px solid var(--rule); border-radius:2px;
+  background:transparent; color:var(--sumi-thin); cursor:pointer;
+  white-space:nowrap; line-height:1.4;
+}
+nav.tabs button[aria-selected="true"]{
+  background:var(--sumi); color:var(--paper); border-color:var(--sumi);
+}
+nav.tabs button .tabid{font-family:var(--mincho);font-weight:600;margin-inline-end:5px}
+
+/* ---- 進捗 ---- */
+.progress{display:flex;align-items:center;gap:10px;margin:4px 0 18px}
+.bar{flex:1;height:6px;background:var(--paper-deep);border:1px solid var(--rule);border-radius:0}
+.bar>span{display:block;height:100%;background:var(--kincha);width:0}
+.progress .count{
+  font-size:12px;color:var(--sumi-thin);
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+
+/* ---- 問題カード ---- */
+.card{
+  background:#F4F7F3; border:1px solid var(--rule);
+  border-top:3px solid var(--sumi); padding:18px 16px 20px;
+}
+.meta{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  font-size:12px;color:var(--sumi-thin);margin-bottom:12px;
+}
+.qno{font-family:var(--mincho);font-size:15px;color:var(--sumi);letter-spacing:.08em}
+.badge{
+  border:1px solid var(--rule);padding:1px 7px;font-size:11px;
+  letter-spacing:.08em;background:var(--paper);
+}
+.badge.calc{border-color:var(--kincha);color:var(--kincha)}
+.q{font-size:16px;line-height:1.95;white-space:pre-wrap;margin:0 0 16px}
+
+/* ---- 資料表 ---- */
+.table-wrap{overflow-x:auto;margin:0 0 16px;border:1px solid var(--rule);background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:420px}
+caption{
+  font-family:var(--mincho);font-size:13px;text-align:start;
+  padding:8px 10px;border-bottom:1px solid var(--rule);letter-spacing:.08em;
+}
+th,td{border:1px solid var(--rule);padding:6px 9px;text-align:start}
+thead th{background:var(--paper-deep);font-weight:600;white-space:nowrap}
+td.num,th.num{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---- 入力 ---- */
+textarea{
+  width:100%;min-height:150px;padding:11px;font-family:var(--gothic);font-size:15px;
+  line-height:1.9;color:var(--sumi);background:var(--paper);
+  border:1px solid var(--rule);border-radius:0;resize:vertical;
+}
+.calcrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+input[type="text"].num{
+  flex:1 1 180px;min-width:0;padding:10px 12px;font-size:17px;
+  font-variant-numeric:tabular-nums;text-align:end;
+  color:var(--sumi);background:var(--paper);border:1px solid var(--rule);border-radius:0;
+}
+.unit{font-size:14px;color:var(--sumi-thin);font-family:var(--mincho)}
+button.act{
+  font-family:var(--mincho);font-size:14px;letter-spacing:.12em;
+  padding:10px 18px;border:1px solid var(--sumi);background:var(--sumi);
+  color:var(--paper);cursor:pointer;border-radius:0;
+}
+button.act:hover{background:#26382E}
+.hint{font-size:12px;color:var(--sumi-thin);margin:8px 0 0}
+
+/* ---- 判定結果 ---- */
+.result{margin-top:18px;padding-top:16px;border-top:1px dashed var(--rule)}
+.verdict{font-family:var(--mincho);font-size:17px;letter-spacing:.1em;margin:0 0 12px}
+.verdict.ok{color:var(--kincha)}
+.verdict.ng{color:var(--shu)}
+.answerbox{
+  background:var(--paper);border:1px solid var(--rule);padding:12px 14px;margin:0 0 14px;
+}
+.answerbox .label{font-size:11px;color:var(--sumi-thin);letter-spacing:.1em;display:block}
+.answerbox .val{font-size:22px;font-variant-numeric:tabular-nums;font-weight:600}
+.work{white-space:pre-wrap;font-size:13.5px;line-height:1.95;margin:0}
+
+/* ---- 採点要素 ---- */
+ul.elements{list-style:none;margin:0 0 14px;padding:0}
+ul.elements li{
+  border:1px solid var(--rule);border-inline-start:4px solid var(--rule);
+  background:var(--paper);margin-bottom:7px;
+}
+ul.elements li.core{border-inline-start-color:var(--shu)}
+ul.elements label{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;cursor:pointer}
+ul.elements input[type="checkbox"]{margin:5px 0 0;flex:0 0 auto;width:17px;height:17px;accent-color:#5A6B62}
+ul.elements .etext{font-size:14.5px;line-height:1.8}
+ul.elements .tag{
+  font-size:10px;letter-spacing:.1em;border:1px solid currentColor;
+  padding:0 5px;margin-inline-end:7px;vertical-align:2px;white-space:nowrap;
+}
+ul.elements li.core .tag{color:var(--shu)}
+ul.elements li:not(.core) .tag{color:var(--sumi-thin)}
+.line-note{
+  font-family:var(--mincho);font-size:14px;letter-spacing:.08em;
+  padding:9px 12px;border:1px solid var(--kincha);color:var(--kincha);margin:0 0 14px;
+}
+.line-note.short{border-color:var(--rule);color:var(--sumi-thin)}
+
+/* ---- 注意・出典 ---- */
+.caution{
+  border:2px solid var(--shu);padding:10px 13px;margin:0 0 14px;
+  font-size:13.5px;line-height:1.85;background:var(--paper);
+}
+.caution b{font-family:var(--mincho);color:var(--shu);letter-spacing:.1em;display:block;font-size:12px;margin-bottom:3px}
+.source{font-size:12.5px;color:var(--sumi-thin);line-height:1.85;border-top:1px solid var(--rule);padding-top:10px}
+.source .doc{font-family:var(--mincho);color:var(--sumi);font-size:13.5px;letter-spacing:.06em}
+.source a{color:var(--kincha)}
+.source .nolink{color:var(--sumi-thin)}
+
+/* ---- ナビ ---- */
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.nav button{
+  font-family:var(--mincho);font-size:14px;letter-spacing:.1em;padding:10px 16px;
+  border:1px solid var(--rule);background:var(--paper);color:var(--sumi);cursor:pointer;border-radius:0;
+}
+.nav button:hover{background:var(--paper-deep)}
+footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--sumi-thin);line-height:1.9}
+
+/* ---- a11y ---- */
+:focus-visible{outline:2px solid var(--kincha);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+.bar>span{transition:width .25s ease}
+@media (prefers-reduced-motion: reduce){.bar>span{transition:none}}
+@media (max-width:400px){
+  body{font-size:15px}
+  .wrap{padding:0 11px 56px}
+  .card{padding:15px 12px 17px}
+  h1{font-size:17px;letter-spacing:.12em}
+  .q{font-size:15px}
+  .answerbox .val{font-size:19px}
+  button.act{padding:10px 14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>会計理論ドリル</h1>
+  <p class="sub">名城大学 経営学部「簿記・会計特別入学試験」対策 ／ 記述33問・計算28問</p>
+</header>
+
+<nav class="tabs" id="tabs" role="tablist" aria-label="セクション"></nav>
+
+<div class="progress">
+  <div class="bar"><span id="barfill"></span></div>
+  <span class="count" id="barcount"></span>
+</div>
+
+<main id="card" class="card" tabindex="-1"></main>
+
+<div class="nav">
+  <button type="button" id="prev">← 前へ</button>
+  <button type="button" id="next">次へ →</button>
+</div>
+
+<footer id="foot"></footer>
+</div>
+<script>
+"use strict";
+
+/* 原価計算基準 全文ページ（SPEC §2-1 で確認済みとされる URL）。
+   本セッションの実行環境は外向き通信が遮断されており、到達確認はできていない。 */
+var CAB = "https://www.asb-j.jp/jp/accounting_standards_system/details.html?topics_id=156";
+function cab(article, anchor){
+  return { doc:"原価計算基準", article:article, issuer:"企業会計審議会", url:CAB + "#" + anchor };
+}
+/* URL を解決できなかった出典（SPEC §2-2 の指示により条番号のみ表示する） */
+function nolink(doc, article, issuer){
+  return { doc:doc, article:article, issuer:issuer, url:null };
+}
+
+/* ---------- 資料表 ---------- */
+var TABLES = {
+  INVENTORY: {
+    caption: "資料　A商品の当月受払（月初棚卸 100個 @200円）",
+    head: ["日付", "摘要", "数量", "単価", "金額"],
+    align: ["", "", "num", "num", "num"],
+    rows: [
+      ["月初", "繰越", "100 個", "200 円", "20,000 円"],
+      ["5日", "仕入", "300 個", "220 円", "66,000 円"],
+      ["10日", "売上", "250 個", "—", "—"],
+      ["20日", "仕入", "200 個", "250 円", "50,000 円"],
+      ["25日", "売上", "150 個", "—", "—"]
+    ],
+    note: "期末の帳簿棚卸数量 200個。実地棚卸数量 190個。期末の正味売却価額 @230円。"
+  },
+  ALLOC: {
+    caption: "資料　当月の製造データ（2026年度 過去問）",
+    head: ["項目", "製品X", "製品Y"],
+    align: ["", "num", "num"],
+    rows: [
+      ["直接材料費", "2,000,000 円", "1,000,000 円"],
+      ["直接労務費", "600,000 円", "1,800,000 円"],
+      ["直接経費", "300,000 円", "450,000 円"],
+      ["機械加工時間", "5,000 時間", "7,500 時間"],
+      ["製造量", "1,000 個", "1,000 個"],
+      ["販売単価", "800 円", "3,200 円"]
+    ],
+    note: "製造間接費 実際発生額 6,000,000円。月初・月末仕掛品はない。円未満は四捨五入。"
+  },
+  STDCOST: {
+    caption: "資料　製品Zの標準原価カードと当月実績",
+    head: ["項目", "標準", "実際"],
+    align: ["", "num", "num"],
+    rows: [
+      ["直接材料費", "@400円 × 3kg", "2,800kg × @410円"],
+      ["直接労務費", "@1,000円 × 2時間", "1,850時間 × @1,020円"],
+      ["製造間接費", "@1,500円 × 2時間", "2,760,000円（実際1,850時間）"],
+      ["　うち変動費率", "@600円", "—"],
+      ["　うち固定費率", "@900円", "—"]
+    ],
+    note: "月間基準操業度 2,000時間。固定製造間接費予算 1,800,000円。当月実際生産量 900個（月初・月末仕掛品なし）。製造間接費は変動予算・三分法による。"
+  }
+};
+
+/* ---------- 問題データ ---------- */
+var DATA = [
+
+/* ============ A 減価償却 ============ */
+{ id:"a-w01", section:"A", type:"write",
+  q:"減価償却を行う目的を説明しなさい。",
+  elements:[
+    {text:"費用配分の原則に基づき、有形固定資産の取得原価を耐用期間の各期間に配分する手続である", core:true},
+    {text:"目的は適正な期間損益計算にある。期末資産の時価評価を目的とするものではない", core:true},
+    {text:"毎期、継続して規則的に行わなければならない（正規の減価償却）", core:true},
+    {text:"償却額を恣意的に増減させると利益操作になるため許されない", core:false}
+  ],
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+{ id:"a-w02", section:"A", type:"write",
+  q:"減価償却の主な計算方法を4つあげ、それぞれの計算構造を説明しなさい。",
+  elements:[
+    {text:"定額法：取得原価から残存価額を控除した額を、耐用年数にわたり均等に配分する", core:true},
+    {text:"定率法：期首の未償却残高に一定の償却率を乗じる。償却額は初期に大きく、以後逓減する", core:true},
+    {text:"生産高比例法：当期の利用度（生産量・走行距離など）に比例して配分する", core:true},
+    {text:"級数法：耐用年数の級数を配分基礎とし、償却額が逓減するように配分する", core:false},
+    {text:"定率法と級数法はいずれも加速度償却（早期に多く償却する方法）である", core:false}
+  ],
+  source:nolink("企業会計原則注解","【注20】／連続意見書第三","企業会計審議会"), caution:null },
+
+{ id:"a-w03", section:"A", type:"write",
+  q:"生産高比例法はどのような資産に適用できるか。その要件を述べなさい。",
+  elements:[
+    {text:"総利用可能量（総生産量・総走行距離など）を物理的に見積ることができる資産であること", core:true},
+    {text:"減価が主として利用の程度に比例して発生する資産であること", core:true},
+    {text:"鉱業用設備、航空機、自動車などが該当する", core:false},
+    {text:"時の経過による減価が主因となる建物などには適さない", core:false}
+  ],
+  source:nolink("連続意見書 第三","有形固定資産の減価償却について","企業会計審議会"), caution:null },
+
+{ id:"a-w04", section:"A", type:"write",
+  q:"固定資産の減価が生じる原因を分類して説明しなさい。",
+  elements:[
+    {text:"物質的減価：使用による磨滅損耗と、時の経過による自然的な老朽化", core:true},
+    {text:"機能的減価：陳腐化（技術進歩による相対的な能力低下）と不適応化（経営環境の変化への不適合）", core:true},
+    {text:"耐用年数は物質的減価と機能的減価の両方を考慮して見積る", core:false}
+  ],
+  source:nolink("連続意見書 第三","有形固定資産の減価償却について","企業会計審議会"), caution:null },
+
+{ id:"a-w05", section:"A", type:"write",
+  q:"減価償却の記帳方法である直接法と間接法の違いを、貸借対照表の表示とあわせて説明しなさい。",
+  elements:[
+    {text:"直接法：償却額を固定資産勘定から直接減額する。帳簿価額のみが示される", core:true},
+    {text:"間接法：減価償却累計額勘定に集計し、固定資産は取得原価のまま据え置く", core:true},
+    {text:"間接法では、貸借対照表上、取得原価から減価償却累計額を控除する形式で表示する", core:true},
+    {text:"間接法のほうが取得原価と償却の進行度が読み取れる点で情報量が多い", core:false}
+  ],
+  source:nolink("企業会計原則 第三・四／同注解","貸借対照表の表示","企業会計審議会"), caution:null },
+
+{ id:"a-w06", section:"A", type:"write",
+  q:"減価償却の自己金融効果（固定資産の流動化）について説明しなさい。",
+  elements:[
+    {text:"減価償却費は当期の費用となるが、当期の現金支出を伴わない費用である", core:true},
+    {text:"その分だけ、収益によって得た資金が社外に流出せず企業内に留保される", core:true},
+    {text:"固定資産に投下された資金が、貨幣性資産の形で回収されることになる", core:false},
+    {text:"自己金融は減価償却の目的ではなく、結果として生じる副次的効果である", core:false}
+  ],
+  source:nolink("連続意見書 第三","有形固定資産の減価償却について","企業会計審議会"), caution:null },
+
+{ id:"a-w07", section:"A", type:"write",
+  q:"固定資産に対する支出を資本的支出と収益的支出に区分する意味を説明しなさい。",
+  elements:[
+    {text:"資本的支出：耐用年数の延長や価値の増加をもたらす支出。固定資産の取得原価に加算する", core:true},
+    {text:"収益的支出：現状を維持するための支出。当期の修繕費として費用処理する", core:true},
+    {text:"区分を誤ると、当期の費用と資産の金額がともに誤り、期間損益計算が歪む", core:true},
+    {text:"資本的支出とした場合、その後の耐用年数にわたり減価償却を通じて費用化される", core:false}
+  ],
+  source:nolink("連続意見書 第三","有形固定資産の減価償却について","企業会計審議会"), caution:null },
+
+{ id:"a-w08", section:"A", type:"write",
+  q:"減価償却における残存価額とは何か。その性格を説明しなさい。",
+  elements:[
+    {text:"耐用年数が到来した時点で回収が見込まれる処分価額の見積額である", core:true},
+    {text:"定額法・生産高比例法では、取得原価から控除して要償却額を算定する", core:true},
+    {text:"見積りである以上、事後の実績と一致するとは限らない", core:false},
+    {text:"実務では備忘価額1円まで償却する扱いが広く行われている", core:false}
+  ],
+  source:nolink("連続意見書 第三","有形固定資産の減価償却について","企業会計審議会"),
+  caution:"備忘価額1円まで償却する扱いは法人税法上の規定に由来する実務慣行である。会計上の残存価額は「処分見込額の見積り」であり、両者を同一のものとして書かない。" },
+
+{ id:"a-c01", section:"A", type:"calc",
+  q:"取得原価3,000,000円、残存価額0円、耐用年数8年の備品を定額法で償却する。\n1年分の減価償却費はいくらか。（円）",
+  answer:375000,
+  work:"(3,000,000 − 0) ÷ 8年 = 375,000円",
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+{ id:"a-c02", section:"A", type:"calc",
+  q:"取得原価2,400,000円、残存価額0円、耐用年数10年の機械を11月1日に取得し、ただちに使用を開始した。決算日は3月31日である。定額法により月割計算する場合、当期の減価償却費はいくらか。（円）",
+  answer:100000,
+  work:"年間償却費 2,400,000 ÷ 10年 = 240,000円\n使用期間 11月1日〜3月31日 = 5か月\n240,000 × 5/12 = 100,000円",
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+{ id:"a-c03", section:"A", type:"calc",
+  q:"取得原価1,000,000円の備品を定率法（償却率0.250）で償却する。\n1年目の減価償却費はいくらか。（円）",
+  answer:250000,
+  work:"1,000,000 × 0.250 = 250,000円",
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+{ id:"a-c04", section:"A", type:"calc",
+  q:"前問と同じ備品について、2年目の減価償却費はいくらか。（円）",
+  answer:187500,
+  work:"期首未償却残高 1,000,000 − 250,000 = 750,000円\n750,000 × 0.250 = 187,500円\n（定率法は期首帳簿価額に償却率を乗じるため、償却額は逓減する）",
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+{ id:"a-c05", section:"A", type:"calc",
+  q:"取得原価4,000,000円、耐用年数8年の機械を200%定率法により償却する。\n1年目の減価償却費はいくらか。（円）",
+  answer:1000000,
+  work:"定額法償却率 = 1 ÷ 8年 = 0.125\n200%定率法の償却率 = 0.125 × 2.0 = 0.250\n4,000,000 × 0.250 = 1,000,000円",
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+{ id:"a-c06", section:"A", type:"calc",
+  q:"取得原価5,000,000円、残存価額500,000円の車両がある。総見積走行距離は300,000km、当期の走行距離は42,000kmであった。生産高比例法による当期の減価償却費はいくらか。（円）",
+  answer:630000,
+  work:"要償却額 5,000,000 − 500,000 = 4,500,000円\n4,500,000 × 42,000km / 300,000km = 630,000円",
+  source:nolink("連続意見書 第三","有形固定資産の減価償却について","企業会計審議会"), caution:null },
+
+{ id:"a-c07", section:"A", type:"calc",
+  q:"取得原価3,000,000円、残存価額0円、耐用年数8年の備品を定額法で償却している。\n取得から3年が経過した時点（3年目の決算日）の帳簿価額はいくらか。（円）",
+  answer:1875000,
+  work:"年間償却費 3,000,000 ÷ 8年 = 375,000円\n減価償却累計額 375,000 × 3年 = 1,125,000円\n帳簿価額 3,000,000 − 1,125,000 = 1,875,000円",
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+{ id:"a-c08", section:"A", type:"calc",
+  q:"取得原価800,000円、期首の減価償却累計額480,000円の備品を、期首に250,000円で売却した。\n固定資産売却損の金額はいくらか。（円・絶対値で答えること）",
+  answer:70000,
+  work:"期首帳簿価額 800,000 − 480,000 = 320,000円\n売却価額 250,000円 − 帳簿価額 320,000円 = △70,000円\nよって固定資産売却損 70,000円",
+  source:nolink("企業会計原則 第二・五","損益計算書（特別損益）","企業会計審議会"), caution:null },
+
+{ id:"a-c09", section:"A", type:"calc",
+  q:"取得原価600,000円、減価償却累計額480,000円の備品を除却した。\n処分価値は30,000円と見積られ、貯蔵品として計上する。固定資産除却損はいくらか。（円）",
+  answer:90000,
+  work:"帳簿価額 600,000 − 480,000 = 120,000円\n貯蔵品として計上する見積処分価値 30,000円\n120,000 − 30,000 = 90,000円",
+  source:nolink("企業会計原則 第二・五","損益計算書（特別損益）","企業会計審議会"), caution:null },
+
+{ id:"a-c10", section:"A", type:"calc",
+  q:"取得原価1,200,000円、残存価額0円、耐用年数6年の備品を定額法で償却している。\n期首（4月1日）の減価償却累計額は600,000円である。当期の9月30日に450,000円で売却した。\n固定資産売却損の金額はいくらか。（円・絶対値で答えること）",
+  answer:50000,
+  work:"年間償却費 1,200,000 ÷ 6年 = 200,000円\n当期償却費（4月1日〜9月30日の6か月）200,000 × 6/12 = 100,000円\n売却時の帳簿価額 1,200,000 − 600,000 − 100,000 = 500,000円\n売却価額 450,000 − 500,000 = △50,000円\nよって固定資産売却損 50,000円",
+  source:nolink("企業会計原則注解","【注20】","企業会計審議会"), caution:null },
+
+/* ============ B 棚卸資産 ============ */
+{ id:"b-w01", section:"B", type:"write",
+  q:"棚卸資産の取得原価はどのように決定されるか説明しなさい。",
+  elements:[
+    {text:"購入代価に、引取運賃・購入手数料などの付随費用を加算して取得原価とする", core:true},
+    {text:"値引・割戻を受けたときは購入代価から控除する", core:true},
+    {text:"仕入割引は代金の早期決済による金融上の利益であり、取得原価から控除せず営業外収益とする", core:false},
+    {text:"製造した棚卸資産は、適正な原価計算基準に従って算定した製造原価による", core:false}
+  ],
+  source:nolink("企業会計原則 第三・五／同注解","【注21】","企業会計審議会"), caution:null },
+
+{ id:"b-w02", section:"B", type:"write",
+  q:"棚卸資産の払出単価の計算方法をあげ、それぞれの内容を説明しなさい。",
+  elements:[
+    {text:"個別法：個々の取得原価をそのまま払出単価とする。個別性の強い資産に用いる", core:true},
+    {text:"先入先出法：先に取得したものから先に払い出したと仮定する", core:true},
+    {text:"平均原価法：総平均法または移動平均法により平均原価を算定する", core:true},
+    {text:"売価還元法：値入率の類似する商品群ごとに、売価合計に原価率を乗じて期末棚卸価額を算定する", core:false},
+    {text:"いったん採用した方法は、正当な理由なく変更してはならない（継続性の原則）", core:false}
+  ],
+  source:nolink("企業会計基準第9号","棚卸資産の評価に関する会計基準","企業会計基準委員会（© 財務会計基準機構）"),
+  caution:"後入先出法は企業会計基準第9号の2008年改正で選択肢から削除されている。答案に書かないこと。" },
+
+{ id:"b-w03", section:"B", type:"write",
+  q:"通常の販売目的で保有する棚卸資産の期末評価について説明しなさい。",
+  elements:[
+    {text:"取得原価と正味売却価額を比較し、正味売却価額が下落しているときは正味売却価額を貸借対照表価額とする", core:true},
+    {text:"正味売却価額＝売価から見積追加製造原価と見積販売直接経費を控除した額", core:true},
+    {text:"収益性の低下による簿価切下額は、原則として売上原価とする", core:true},
+    {text:"取得原価まで回復させる処理（洗替法）と、切り下げたままとする処理（切放法）がある", core:false}
+  ],
+  source:nolink("企業会計基準第9号","棚卸資産の評価に関する会計基準","企業会計基準委員会（© 財務会計基準機構）"),
+  caution:"「原価法と低価法のいずれかを選択適用する」という枠組みは廃止されている。『低価法を適用する』と書かないこと。現行は収益性の低下があれば必ず簿価を切り下げる。" },
+
+{ id:"b-w04", section:"B", type:"write",
+  q:"棚卸減耗損と商品評価損の違いを、算定方法と損益計算書上の表示にふれて説明しなさい。",
+  elements:[
+    {text:"棚卸減耗損：数量の減少による損失。（帳簿数量 − 実地数量）× 原価", core:true},
+    {text:"商品評価損：単価の下落による損失。（原価 − 正味売却価額）× 実地数量", core:true},
+    {text:"商品評価損は原則として売上原価に含める", core:true},
+    {text:"棚卸減耗損は、原価性があれば売上原価または販売費、原価性がなければ営業外費用・特別損失とする", core:false}
+  ],
+  source:nolink("企業会計原則注解／企業会計基準第9号","【注10】","企業会計審議会／企業会計基準委員会（© 財務会計基準機構）"), caution:null },
+
+{ id:"b-c01", section:"B", type:"calc", table:"INVENTORY",
+  q:"先入先出法によった場合の月末商品棚卸高はいくらか。（円）",
+  answer:50000,
+  work:"受入合計 100 + 300 + 200 = 600個、払出合計 250 + 150 = 400個\n月末数量 600 − 400 = 200個\n先入先出法では、月初100個と5日仕入300個が先に払い出される（計400個）\nよって月末の200個は20日仕入分\n200個 × @250円 = 50,000円",
+  source:nolink("企業会計基準第9号","棚卸資産の評価に関する会計基準","企業会計基準委員会（© 財務会計基準機構）"), caution:null },
+
+{ id:"b-c02", section:"B", type:"calc", table:"INVENTORY",
+  q:"移動平均法によった場合の月末商品棚卸高はいくらか。（円）",
+  answer:47000,
+  work:"月初　100個 / 20,000円\n5日仕入後　400個 / 86,000円 → 平均単価 @215円\n10日売上250個　払出 250 × 215 = 53,750円 → 残 150個 / 32,250円\n20日仕入後　350個 / 82,250円 → 平均単価 @235円\n25日売上150個　払出 150 × 235 = 35,250円 → 残 200個 / 47,000円",
+  source:nolink("企業会計基準第9号","棚卸資産の評価に関する会計基準","企業会計基準委員会（© 財務会計基準機構）"), caution:null },
+
+{ id:"b-c03", section:"B", type:"calc", table:"INVENTORY",
+  q:"帳簿棚卸数量200個、実地棚卸数量190個であった。原価は@250円である。\n棚卸減耗損はいくらか。（円）",
+  answer:2500,
+  work:"(200個 − 190個) × @250円 = 2,500円",
+  source:nolink("企業会計原則注解","【注10】","企業会計審議会"), caution:null },
+
+{ id:"b-c04", section:"B", type:"calc", table:"INVENTORY",
+  q:"実地棚卸数量190個、原価@250円、正味売却価額@230円であった。\n商品評価損はいくらか。（円）",
+  answer:3800,
+  work:"(@250円 − @230円) × 190個 = 3,800円\n（評価損は実地棚卸数量に対して算定する。帳簿数量ではない）",
+  source:nolink("企業会計基準第9号","棚卸資産の評価に関する会計基準","企業会計基準委員会（© 財務会計基準機構）"),
+  caution:"減耗した10個分に評価損を重ねて計上しないこと。棚卸減耗損 → 商品評価損 の順に算定する。" },
+
+/* ============ C 引当金・経過勘定 ============ */
+{ id:"c-w01", section:"C", type:"write",
+  q:"引当金を計上するための要件を説明しなさい。",
+  elements:[
+    {text:"将来の特定の費用または損失であること", core:true},
+    {text:"その発生が当期以前の事象に起因していること", core:true},
+    {text:"発生の可能性が高いこと", core:true},
+    {text:"金額を合理的に見積ることができること", core:true},
+    {text:"4要件をすべて満たす場合に、当期の負担に属する金額を当期の費用または損失として繰り入れる", core:false}
+  ],
+  source:nolink("企業会計原則注解","【注18】","企業会計審議会"), caution:null },
+
+{ id:"c-w02", section:"C", type:"write",
+  q:"引当金を貸借対照表上の性格から分類し、それぞれ例をあげて説明しなさい。",
+  elements:[
+    {text:"評価性引当金：特定の資産から控除する形で表示するもの。例＝貸倒引当金", core:true},
+    {text:"負債性引当金：負債の部に計上するもの", core:true},
+    {text:"負債性引当金はさらに、法的債務である引当金（例＝退職給付引当金、賞与引当金）と、債務ではない引当金（例＝修繕引当金）に分かれる", core:true},
+    {text:"貸倒引当金は債権から控除する形式で表示する", core:false}
+  ],
+  source:nolink("企業会計原則注解","【注18】","企業会計審議会"), caution:null },
+
+{ id:"c-w03", section:"C", type:"write",
+  q:"発生の可能性が低い偶発事象について、引当金を計上してはならない理由を説明しなさい。",
+  elements:[
+    {text:"引当金の要件のうち「発生の可能性が高いこと」を満たさないため", core:true},
+    {text:"計上を認めると、根拠のない費用計上により利益の圧縮（秘密積立金の形成）が可能になる", core:true},
+    {text:"過度の保守主義は真実な報告をゆがめるものとして認められない", core:true},
+    {text:"重要性が高い場合には、注記による開示で対応する", core:false}
+  ],
+  source:nolink("企業会計原則注解","【注18】／【注4】","企業会計審議会"), caution:null },
+
+{ id:"c-w04", section:"C", type:"write",
+  q:"経過勘定項目を4つあげ、それぞれの意味を説明しなさい。また前払費用と前払金の違いにふれなさい。",
+  elements:[
+    {text:"前払費用：継続的な役務提供契約について、まだ提供を受けていない役務に対し支払った対価。当期の費用から控除する", core:true},
+    {text:"未払費用：すでに提供を受けた役務に対し、まだ支払っていない対価。当期の費用に加える", core:true},
+    {text:"前受収益：まだ提供していない役務に対して受け取った対価。当期の収益から控除する", core:true},
+    {text:"未収収益：すでに提供した役務に対して、まだ受け取っていない対価。当期の収益に加える", core:true},
+    {text:"経過勘定は「一定の契約に従い継続して役務の提供を受ける（または行う）」場合に生じる。前払金は物品の購入など単発の取引に対する前渡しであり、経過勘定ではない", core:false}
+  ],
+  source:nolink("企業会計原則注解","【注5】","企業会計審議会"), caution:null },
+
+{ id:"c-c01", section:"C", type:"calc",
+  q:"決算日における売掛金の残高は4,000,000円である。貸倒実績率は2％、貸倒引当金の決算整理前残高は30,000円である。\n差額補充法による貸倒引当金繰入額はいくらか。（円）",
+  answer:50000,
+  work:"設定すべき貸倒引当金 4,000,000 × 2% = 80,000円\n決算整理前残高 30,000円\n繰入額 80,000 − 30,000 = 50,000円",
+  source:nolink("企業会計原則注解","【注18】","企業会計審議会"), caution:null },
+
+/* ============ D 有価証券・一般原則 ============ */
+{ id:"d-w01", section:"D", type:"write",
+  q:"有価証券を保有目的により分類し、それぞれの貸借対照表価額を述べなさい。",
+  elements:[
+    {text:"売買目的有価証券：時価をもって貸借対照表価額とする", core:true},
+    {text:"満期保有目的の債券：取得原価。ただし取得価額と債券金額に金利調整と認められる差額があるときは償却原価法による", core:true},
+    {text:"子会社株式・関連会社株式：取得原価", core:true},
+    {text:"その他有価証券：時価", core:true},
+    {text:"分類は保有目的によって決まり、取得後に恣意的に変更することはできない", core:false}
+  ],
+  source:nolink("企業会計基準第10号","金融商品に関する会計基準","企業会計基準委員会（© 財務会計基準機構）"), caution:null },
+
+{ id:"d-w02", section:"D", type:"write",
+  q:"売買目的有価証券とその他有価証券について、評価差額の処理がなぜ異なるのかを説明しなさい。",
+  elements:[
+    {text:"売買目的有価証券の評価差額は当期の損益とする", core:true},
+    {text:"売買目的は時価変動により利益を得ることが目的であり、時価変動そのものが企業の成果といえるため", core:true},
+    {text:"その他有価証券の評価差額は、原則として純資産の部に計上する（全部純資産直入法）", core:true},
+    {text:"その他有価証券は事業遂行上の必要から保有され、直ちに売却することが想定されないため、評価差額を当期の損益とするのは適当でない", core:true},
+    {text:"時価が下落した場合に限り当期の損失とする部分純資産直入法も認められる", core:false}
+  ],
+  source:nolink("企業会計基準第10号","金融商品に関する会計基準","企業会計基準委員会（© 財務会計基準機構）"), caution:null },
+
+{ id:"d-w03", section:"D", type:"write",
+  q:"正規の簿記の原則について説明しなさい。",
+  elements:[
+    {text:"すべての取引について、正確な会計帳簿を作成することを要請する原則である", core:true},
+    {text:"網羅性・立証性・秩序性を備えた記録が求められる", core:true},
+    {text:"財務諸表は正確な会計帳簿に基づいて作成されなければならない（誘導法）", core:true},
+    {text:"重要性の乏しいものについては簡便な処理も認められる（重要性の原則）", core:false}
+  ],
+  source:nolink("企業会計原則 第一・二／同注解","【注1】","企業会計審議会"), caution:null },
+
+{ id:"d-w04", section:"D", type:"write",
+  q:"保守主義の原則について説明しなさい。あわせて、その限界にふれなさい。",
+  elements:[
+    {text:"企業の財政に不利な影響を及ぼす可能性がある場合には、これに備えて健全な会計処理をしなければならないという原則である", core:true},
+    {text:"利益を控えめに計上することで、企業の財務的健全性を保つことを狙いとする", core:true},
+    {text:"過度の保守主義は認められない。真実な報告をゆがめることになるため", core:true},
+    {text:"秘密積立金の形成につながる会計処理は、真実性の原則に反する", core:false}
+  ],
+  source:nolink("企業会計原則 第一・六／同注解","【注4】","企業会計審議会"), caution:null },
+
+/* ============ E 原価計算の基礎概念 ============ */
+{ id:"e-w01", section:"E", type:"write",
+  q:"原価計算基準があげる原価計算の目的を5つ述べなさい。",
+  elements:[
+    {text:"財務諸表作成目的：財務諸表に表示するために必要な真実の原価を集計する", core:true},
+    {text:"価格計算目的：価格計算に必要な原価資料を提供する", core:true},
+    {text:"原価管理目的：経営管理者の各階層に対して原価管理に必要な資料を提供する", core:true},
+    {text:"予算管理目的：予算の編成ならびに予算統制のために必要な資料を提供する", core:true},
+    {text:"基本計画設定目的：経営の基本計画を設定するにあたり、これに必要な原価情報を提供する", core:true},
+    {text:"これらの目的は相互に関連するが、同時にすべてを最も良く満たす一組の原価が存在するとは限らない", core:false}
+  ],
+  source:cab("一（原価計算の目的）","heading-id-12"), caution:null },
+
+{ id:"e-w02", section:"E", type:"write",
+  q:"原価計算制度における「原価」の本質を、備えるべき性質にふれて説明しなさい。",
+  elements:[
+    {text:"原価とは、一定の給付にかかわらせて把握された財貨または用役の消費を、貨幣価値によって表したものである", core:true},
+    {text:"経済価値の消費であること", core:true},
+    {text:"経営において作り出された一定の給付に転嫁される価値であること", core:true},
+    {text:"経営目的に関連したものであること", core:true},
+    {text:"正常なものであること（異常な状態を原因とする価値の減少は含まない）", core:true}
+  ],
+  source:cab("三（原価の本質）","heading-id-28"), caution:null },
+
+{ id:"e-w03", section:"E", type:"write",
+  q:"非原価項目とは何か。該当するものをあげて説明しなさい。",
+  elements:[
+    {text:"原価計算制度において原価に算入しない項目をいう", core:true},
+    {text:"経営目的に関連しない価値の減少（投資資産に関する費用、支払利息などの財務費用、未稼働の固定資産に関する費用など）", core:true},
+    {text:"異常な状態を原因とする価値の減少（火災・風水害などの偶発的事故による損失、異常な仕損・減損、災害損失など）", core:true},
+    {text:"税法上とくに認められている損金算入項目（租税特別措置法による償却額など）", core:false},
+    {text:"その他の利益剰余金に課する項目（法人税・住民税、配当金、任意積立金繰入額など）", core:false}
+  ],
+  source:cab("五（非原価項目）","heading-id-50"), caution:null },
+
+{ id:"e-w04", section:"E", type:"write",
+  q:"原価の諸概念について、対になる区分を3組あげて説明しなさい。",
+  elements:[
+    {text:"実際原価と標準原価：実際の消費量に基づくか、財貨の消費量を科学的・統計的調査に基づいて能率の尺度となるように予定して定めるか", core:true},
+    {text:"製品原価と期間原価：一定単位の製品に集計して売上原価となるまで繰り延べるか、一定期間の収益に直接対応させて把握するか", core:true},
+    {text:"全部原価と部分原価：製造原価の全体を集計するか、その一部（変動費のみなど）を集計するか", core:true},
+    {text:"実際原価は必ずしも実際価格による必要はなく、予定価格を用いても、消費量が実際であれば実際原価である", core:false},
+    {text:"部分原価のうち最も重要なものは直接原価（変動原価）である", core:false}
+  ],
+  source:cab("四（原価の諸概念）","heading-id-35"), caution:null },
+
+{ id:"e-w05", section:"E", type:"write",
+  q:"製品の原価を計算する手続を、3つの段階に分けて説明しなさい。",
+  elements:[
+    {text:"第1段階　費目別計算：一定期間における原価要素を費目別に分類測定する", core:true},
+    {text:"第2段階　部門別計算：費目別計算で把握された原価要素を、原価部門別に分類集計する", core:true},
+    {text:"第3段階　製品別計算：原価要素を一定の製品単位に集計し、単位製品の製造原価を算定する", core:true},
+    {text:"部門別計算は、製品別計算に先立つ中間段階であり、原価管理にも役立つ", core:false},
+    {text:"費目別計算は財務会計の勘定組織と有機的に結びつけて行う", core:false}
+  ],
+  source:cab("九・一五・一九（費目別／部門別／製品別計算）","heading-id-141"), caution:null },
+
+{ id:"e-w06", section:"E", type:"write",
+  q:"個別原価計算と総合原価計算の違いを、適用される生産形態にふれて説明しなさい。",
+  elements:[
+    {text:"個別原価計算：種類を異にする製品を個別的に生産する受注生産形態に適用する", core:true},
+    {text:"個別原価計算では、特定製造指図書について製造直接費と製造間接費を集計し、製造原価を算定する", core:true},
+    {text:"総合原価計算：同種または異種の製品を反復連続的に生産する形態に適用する", core:true},
+    {text:"総合原価計算では、一期間の製造費用を完成品と期末仕掛品に配分して完成品総合原価を算定する", core:true},
+    {text:"総合原価計算は単純・組別・等級別に分かれる", core:false}
+  ],
+  source:cab("一九・三一（製品別計算／個別原価計算）","heading-id-208"), caution:null },
+
+/* ============ F 費目別・配賦計算 ============ */
+{ id:"f-w01", section:"F", type:"write",
+  q:"製造原価要素の分類基準を5つあげ、それぞれの内容を説明しなさい。",
+  elements:[
+    {text:"形態別分類：材料費・労務費・経費という、発生形態による分類", core:true},
+    {text:"機能別分類：主要材料費・補助材料費、直接工賃金・間接工賃金など、原価が果たす機能による分類", core:true},
+    {text:"製品との関連における分類：直接費と間接費。特定製品に直接跡づけられるかどうかによる", core:true},
+    {text:"操業度との関連における分類：変動費と固定費（ほかに準変動費・準固定費）", core:true},
+    {text:"原価の管理可能性に基づく分類：管理可能費と管理不能費", core:true},
+    {text:"下級管理者にとって管理不能費であっても、上級管理者にとっては管理可能費となることがある", core:false}
+  ],
+  source:cab("八（製造原価要素の分類基準）","heading-id-106"), caution:null },
+
+{ id:"f-w02", section:"F", type:"write",
+  q:"部門個別費と部門共通費の違いを述べ、部門別計算の手続を説明しなさい。",
+  elements:[
+    {text:"部門個別費：特定の原価部門において固有に発生したことが直接把握できる原価要素。当該部門に直課する", core:true},
+    {text:"部門共通費：複数部門に共通して発生する原価要素。適切な配賦基準により関係部門に配賦する", core:true},
+    {text:"第1次集計：原価要素を製造部門と補助部門に集計する", core:true},
+    {text:"第2次集計：補助部門費を、用役の提供割合などの配賦基準により製造部門に配賦する", core:true},
+    {text:"補助部門費の配賦方法には、直接配賦法・相互配賦法・階梯式配賦法がある", core:false}
+  ],
+  source:cab("一七・一八（部門個別費と部門共通費／部門別計算の手続）","heading-id-198"), caution:null },
+
+{ id:"f-w03", section:"F", type:"write",
+  q:"製造間接費の配賦基準は、どのような観点から選ぶべきか。近年の原価計算手法にもふれて述べなさい。",
+  elements:[
+    {text:"配賦基準は、製造間接費の発生と因果関係のある基準（原価の発生に最も関連の深い基準）を選ぶ", core:true},
+    {text:"直接作業時間・機械運転時間・直接材料費など、複数の基準がありうる", core:true},
+    {text:"基準の選び方によって製品ごとの原価は変わるため、内部相互補助（ある製品の原価が他の製品に肩代わりされること）が生じうる", core:true},
+    {text:"活動基準原価計算（ABC）は、活動を単位として原価作用因（コスト・ドライバー）により配賦し、この歪みを軽減しようとする手法である", core:false},
+    {text:"多品種少量生産で製造間接費の割合が高いほど、配賦基準の選択が原価に与える影響は大きい", core:false}
+  ],
+  source:cab("三三（間接費の配賦）","heading-id-283"),
+  caution:"活動基準原価計算（ABC）は昭和37年制定の原価計算基準には規定がない。答案では「原価計算基準には定めがないが」と断ったうえで書くこと。" },
+
+{ id:"f-c01", section:"F", type:"calc", table:"ALLOC",
+  q:"機械加工時間を配賦基準とする場合、製造間接費の配賦率はいくらか。（円／時間）",
+  answer:480, unit:"円／時間",
+  work:"配賦基準の合計 5,000時間 + 7,500時間 = 12,500時間\n6,000,000円 ÷ 12,500時間 = @480円／時間",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+{ id:"f-c02", section:"F", type:"calc", table:"ALLOC",
+  q:"直接材料費を配賦基準とする場合、製品Xへの製造間接費配賦額はいくらか。（円）",
+  answer:4000000,
+  work:"直接材料費合計 2,000,000 + 1,000,000 = 3,000,000円\n配賦率 6,000,000 ÷ 3,000,000 = 2.0\n製品X 2,000,000 × 2.0 = 4,000,000円\n（製品Y 1,000,000 × 2.0 = 2,000,000円　合計 6,000,000円）",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+{ id:"f-c03", section:"F", type:"calc", table:"ALLOC",
+  q:"直接労務費を配賦基準とする場合、製品Xへの製造間接費配賦額はいくらか。（円）",
+  answer:1500000,
+  work:"直接労務費合計 600,000 + 1,800,000 = 2,400,000円\n配賦率 6,000,000 ÷ 2,400,000 = 2.5\n製品X 600,000 × 2.5 = 1,500,000円\n（製品Y 1,800,000 × 2.5 = 4,500,000円　合計 6,000,000円）",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+{ id:"f-c04", section:"F", type:"calc", table:"ALLOC",
+  q:"直接費（直接材料費＋直接労務費＋直接経費）を配賦基準とする場合、製品Xへの製造間接費配賦額はいくらか。（円未満四捨五入）",
+  answer:2829268,
+  work:"製品X 2,000,000 + 600,000 + 300,000 = 2,900,000円\n製品Y 1,000,000 + 1,800,000 + 450,000 = 3,250,000円\n合計 6,150,000円\n製品X 6,000,000 × 2,900,000 / 6,150,000 = 2,829,268.29… → 2,829,268円\n（製品Y 3,170,732円　合計 6,000,000円）",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+{ id:"f-c05", section:"F", type:"calc", table:"ALLOC",
+  q:"素価（直接材料費＋直接労務費）を配賦基準とする場合、製品Xへの製造間接費配賦額はいくらか。（円未満四捨五入）",
+  answer:2888889,
+  work:"製品X 2,000,000 + 600,000 = 2,600,000円\n製品Y 1,000,000 + 1,800,000 = 2,800,000円\n合計 5,400,000円\n製品X 6,000,000 × 2,600,000 / 5,400,000 = 2,888,888.88… → 2,888,889円\n（製品Y 3,111,111円　合計 6,000,000円）\n※素価には直接経費を含めない。直接費基準との違いに注意。",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+{ id:"f-c06", section:"F", type:"calc", table:"ALLOC",
+  q:"製造数量を配賦基準とする場合、製品Xへの製造間接費配賦額はいくらか。（円）",
+  answer:3000000,
+  work:"製造数量合計 1,000個 + 1,000個 = 2,000個\n配賦率 6,000,000 ÷ 2,000個 = @3,000円\n製品X 1,000個 × 3,000 = 3,000,000円\n（製品Y も 3,000,000円）",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+{ id:"f-c07", section:"F", type:"calc", table:"ALLOC",
+  q:"機械加工時間を配賦基準とする場合、製品Xへの製造間接費配賦額はいくらか。（円）",
+  answer:2400000,
+  work:"配賦率 6,000,000 ÷ 12,500時間 = @480円／時間\n製品X 5,000時間 × 480 = 2,400,000円\n（製品Y 7,500時間 × 480 = 3,600,000円　合計 6,000,000円）",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+{ id:"f-c08", section:"F", type:"calc", table:"ALLOC",
+  q:"販売価格を配賦基準とする場合、製品Xへの製造間接費配賦額はいくらか。（円）",
+  answer:1200000,
+  work:"売上高　製品X 800円 × 1,000個 = 800,000円\n　　　　製品Y 3,200円 × 1,000個 = 3,200,000円　合計 4,000,000円\n配賦率 6,000,000 ÷ 4,000,000 = 1.5\n製品X 800,000 × 1.5 = 1,200,000円\n（製品Y 3,200,000 × 1.5 = 4,800,000円　合計 6,000,000円）\n※負担能力主義による配賦であり、原価の発生との因果関係に基づく配賦ではない。",
+  source:cab("三三（間接費の配賦）","heading-id-283"), caution:null },
+
+/* ============ G 予定配賦・差異分析 ============ */
+{ id:"g-w01", section:"G", type:"write",
+  q:"製造間接費の予定配賦率はどのように算定するか。その基礎となる操業度の考え方にふれて説明しなさい。",
+  elements:[
+    {text:"予定配賦率＝一定期間の製造間接費予算額 ÷ 同期間の予定配賦基準数値（基準操業度）", core:true},
+    {text:"予定配賦率を用いる理由は、実際配賦では月々の操業度の変動により製品原価が変動してしまうこと、および実際発生額の確定を待つと原価計算が遅れることにある", core:true},
+    {text:"基準操業度には、技術的に達成可能な最大操業度をそのまま用いるのではない", core:true},
+    {text:"期待実際操業度（次期に予期される操業度）または正常操業度（数期間の平均的な操業度水準）による", core:true},
+    {text:"予定配賦額と実際発生額との差額が製造間接費配賦差異となる", core:false}
+  ],
+  source:cab("三三（間接費の配賦）","heading-id-283"),
+  caution:"基準操業度を「理論的生産能力（最大操業度）」と書かないこと。理論的生産能力は不可避的な作業休止も考慮しない理想的な操業度であり、通常これを予定配賦率の基礎とはしない。" },
+
+{ id:"g-w02", section:"G", type:"write",
+  q:"原価差異を算定し分析することには、どのような意義があるか説明しなさい。",
+  elements:[
+    {text:"原価差異とは、実際原価計算制度においては原価の実際発生額と標準（予定）額との差額をいう", core:true},
+    {text:"差異を原因別に分析することで、どこに非能率や無駄があったかを明らかにできる", core:true},
+    {text:"分析結果を経営管理者の各階層に報告し、原価管理に役立てる（責任の所在を明らかにする）", core:true},
+    {text:"差異は、その発生原因に応じて管理可能なものと管理不能なものに分けて評価する必要がある", core:false}
+  ],
+  source:cab("四四（原価差異の算定および分析）","heading-id-383"), caution:null },
+
+{ id:"g-w03", section:"G", type:"write",
+  q:"標準原価計算制度において生じる原価差異にはどのようなものがあるか。分類して述べなさい。",
+  elements:[
+    {text:"直接材料費差異：価格差異と数量差異に分析する", core:true},
+    {text:"直接労務費差異：賃率差異と作業時間差異に分析する", core:true},
+    {text:"製造間接費差異（配賦差異）：予算差異・能率差異・操業度差異などに分析する", core:true},
+    {text:"価格面の差異（価格差異・賃率差異）は市場要因の影響を受け、現場にとって管理困難なことが多い", core:false},
+    {text:"数量面の差異（数量差異・作業時間差異）は現場の能率を反映しやすく、原価管理上とくに重要である", core:false}
+  ],
+  source:cab("四六（標準原価計算制度における原価差異）","heading-id-406"), caution:null },
+
+{ id:"g-w04", section:"G", type:"write",
+  q:"原価差異は会計上どのように処理するか説明しなさい。",
+  elements:[
+    {text:"原価差異は、材料受入価格差異を除き、原則として当年度の売上原価に賦課する", core:true},
+    {text:"数量差異・作業時間差異・能率差異などのうち、異常な状態に基づくと認められるものは非原価項目として処理する", core:true},
+    {text:"差異が比較的多額であるときは、売上原価と期末棚卸資産に配賦する", core:true},
+    {text:"材料受入価格差異は、当年度の材料の払出高と期末在高に配賦する", core:false},
+    {text:"予定価格等が不適当なために多額の差異が生じた場合は、標準・予定そのものを改訂すべきである", core:false}
+  ],
+  source:cab("四七（原価差異の会計処理）","heading-id-422"), caution:null },
+
+{ id:"g-c01", section:"G", type:"calc", table:"STDCOST",
+  q:"直接材料費の価格差異はいくらか。（円・絶対値で答えること）",
+  answer:28000,
+  work:"価格差異 =（標準単価 − 実際単価）× 実際消費量\n=（@400円 − @410円）× 2,800kg = △28,000円（不利差異）\nよって 28,000円",
+  source:cab("四六（標準原価計算制度における原価差異）","heading-id-406"), caution:null },
+
+{ id:"g-c02", section:"G", type:"calc", table:"STDCOST",
+  q:"直接材料費の数量差異はいくらか。（円・絶対値で答えること）",
+  answer:40000,
+  work:"標準消費量 = 900個 × 3kg = 2,700kg\n数量差異 =（標準消費量 − 実際消費量）× 標準単価\n=（2,700kg − 2,800kg）× @400円 = △40,000円（不利差異）\nよって 40,000円\n※数量差異には標準単価を用いる。実際単価を使わないこと。",
+  source:cab("四六（標準原価計算制度における原価差異）","heading-id-406"), caution:null },
+
+{ id:"g-c03", section:"G", type:"calc", table:"STDCOST",
+  q:"直接労務費の賃率差異はいくらか。（円・絶対値で答えること）",
+  answer:37000,
+  work:"賃率差異 =（標準賃率 − 実際賃率）× 実際作業時間\n=（@1,000円 − @1,020円）× 1,850時間 = △37,000円（不利差異）\nよって 37,000円",
+  source:cab("四六（標準原価計算制度における原価差異）","heading-id-406"), caution:null },
+
+{ id:"g-c04", section:"G", type:"calc", table:"STDCOST",
+  q:"直接労務費の作業時間差異はいくらか。（円・絶対値で答えること）",
+  answer:50000,
+  work:"標準作業時間 = 900個 × 2時間 = 1,800時間\n作業時間差異 =（標準作業時間 − 実際作業時間）× 標準賃率\n=（1,800時間 − 1,850時間）× @1,000円 = △50,000円（不利差異）\nよって 50,000円",
+  source:cab("四六（標準原価計算制度における原価差異）","heading-id-406"), caution:null },
+
+{ id:"g-c05", section:"G", type:"calc", table:"STDCOST",
+  q:"製造間接費の予算差異はいくらか。（変動予算による。円・絶対値で答えること）",
+  answer:150000,
+  work:"実際作業時間における予算許容額\n= 変動費率 @600円 × 1,850時間 + 固定費予算 1,800,000円\n= 1,110,000 + 1,800,000 = 2,910,000円\n予算差異 = 2,910,000 − 実際発生額 2,760,000 = +150,000円（有利差異）\n\n〔検算〕標準配賦額 1,800時間 × @1,500円 = 2,700,000円\n総差異 2,700,000 − 2,760,000 = △60,000円\n　予算差異　　+150,000円（有利）\n　能率差異　（1,800 − 1,850）× @1,500 = △75,000円（不利）\n　操業度差異（1,850 − 2,000）× @900 = △135,000円（不利）\n　合計 △60,000円　→　総差異と一致",
+  source:cab("四六（標準原価計算制度における原価差異）","heading-id-406"), caution:null }
+
+];
+
+/* ---------- セクション定義 ---------- */
+var SECTIONS = [
+  { id:"A", name:"減価償却" },
+  { id:"B", name:"棚卸資産" },
+  { id:"C", name:"引当金・経過勘定" },
+  { id:"D", name:"有価証券・一般原則" },
+  { id:"E", name:"原価計算の基礎概念" },
+  { id:"F", name:"費目別・配賦計算" },
+  { id:"G", name:"予定配賦・差異分析" }
+];
+
+/* ---------- 状態（メモリ上のみ。localStorage は使わない） ---------- */
+var state = {};
+DATA.forEach(function(q){
+  state[q.id] = { input:"", revealed:false, checks:(q.elements||[]).map(function(){ return false; }) };
+});
+var current = { section:"A", index:0 };
+
+function qsOf(sec){ return DATA.filter(function(q){ return q.section === sec; }); }
+
+/* ---------- 数値の正規化 ---------- */
+function normalizeNumber(raw){
+  if (raw == null) return "";
+  var s = String(raw);
+  // 全角英数字 → 半角
+  s = s.replace(/[０-９]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); });
+  // 各種マイナス記号 → 半角ハイフン
+  s = s.replace(/[－−ー‐―-]/g, "-");
+  // 全角ピリオド → 半角
+  s = s.replace(/[．。]/g, ".");
+  // 桁区切り・空白・単位を除去
+  s = s.replace(/[,，]/g, "");
+  s = s.replace(/[\s　]/g, "");
+  s = s.replace(/[円個時間kgKg％%\/／]/g, "");
+  return s;
+}
+function parseAnswer(raw){
+  var s = normalizeNumber(raw);
+  if (s === "" || s === "-") return null;
+  if (!/^-?\d+(\.\d+)?$/.test(s)) return null;
+  var n = Number(s);
+  if (!isFinite(n)) return null;
+  return n;
+}
+function fmt(n){
+  var neg = n < 0, a = Math.abs(n);
+  var i = Math.floor(a), f = a - i;
+  var s = String(i).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (f > 0) s += String(Math.round(f * 1e6) / 1e6).slice(1);
+  return (neg ? "-" : "") + s;
+}
+
+/* ---------- DOM ヘルパ ---------- */
+function el(tag, attrs, children){
+  var n = document.createElement(tag);
+  if (attrs) Object.keys(attrs).forEach(function(k){
+    if (k === "class") n.className = attrs[k];
+    else if (k === "text") n.textContent = attrs[k];
+    else n.setAttribute(k, attrs[k]);
+  });
+  (children || []).forEach(function(c){ if (c) n.appendChild(c); });
+  return n;
+}
+
+/* ---------- タブ ---------- */
+function renderTabs(){
+  var tabs = document.getElementById("tabs");
+  tabs.textContent = "";
+  SECTIONS.forEach(function(s){
+    var n = qsOf(s.id).length;
+    var b = el("button", {
+      type:"button", role:"tab",
+      "aria-selected": String(s.id === current.section),
+      "aria-label": s.id + " " + s.name + " 全" + n + "問"
+    });
+    b.appendChild(el("span", { class:"tabid", text:s.id }));
+    b.appendChild(document.createTextNode(s.name));
+    b.addEventListener("click", function(){
+      current.section = s.id; current.index = 0; render();
+    });
+    tabs.appendChild(b);
+  });
+}
+
+/* ---------- 進捗 ---------- */
+function renderProgress(){
+  var list = qsOf(current.section);
+  var done = list.filter(function(q){ return state[q.id].revealed; }).length;
+  document.getElementById("barfill").style.width =
+    (list.length ? (done / list.length * 100) : 0) + "%";
+  document.getElementById("barcount").textContent =
+    "解答済 " + done + " / " + list.length;
+}
+
+/* ---------- 資料表 ---------- */
+function renderTable(key){
+  var t = TABLES[key];
+  if (!t) return null;
+  var table = el("table");
+  table.appendChild(el("caption", { text:t.caption }));
+  var thead = el("thead"), tr = el("tr");
+  t.head.forEach(function(h, i){
+    tr.appendChild(el("th", { scope:"col", class:(t.align[i] || "") }, [document.createTextNode(h)]));
+  });
+  thead.appendChild(tr); table.appendChild(thead);
+  var tbody = el("tbody");
+  t.rows.forEach(function(r){
+    var row = el("tr");
+    r.forEach(function(c, i){
+      row.appendChild(el(i === 0 ? "th" : "td",
+        { class:(t.align[i] || ""), scope:(i === 0 ? "row" : "") },
+        [document.createTextNode(c)]));
+    });
+    tbody.appendChild(row);
+  });
+  table.appendChild(tbody);
+  var wrap = el("div", { class:"table-wrap" }, [table]);
+  var box = el("div", {}, [wrap]);
+  if (t.note) box.appendChild(el("p", { class:"hint", text:t.note }));
+  return box;
+}
+
+/* ---------- 出典 ---------- */
+function renderSource(src){
+  var box = el("div", { class:"source" });
+  box.appendChild(el("span", { class:"doc", text:"出典　" + src.doc + "　" + src.article }));
+  box.appendChild(el("br"));
+  box.appendChild(document.createTextNode(src.issuer));
+  box.appendChild(el("br"));
+  if (src.url){
+    var a = el("a", { href:src.url, target:"_blank", rel:"noopener", text:"公式ページで条文を確認する" });
+    box.appendChild(a);
+  } else {
+    box.appendChild(el("span", { class:"nolink",
+      text:"※このアプリからリンクできる公開ページを確認できていないため、URLは掲載していない。手元の会計法規集で条番号を引いて確認すること。" }));
+  }
+  return box;
+}
+
+/* ---------- 注意 ---------- */
+function renderCaution(text){
+  var box = el("div", { class:"caution" });
+  box.appendChild(el("b", { text:"答案での注意" }));
+  box.appendChild(document.createTextNode(text));
+  return box;
+}
+
+/* ---------- 記述問題 ---------- */
+function renderWrite(q, card){
+  var st = state[q.id];
+  var ta = el("textarea", {
+    id:"ta-" + q.id, "aria-label":"答案の記入欄",
+    placeholder:"ここに自分の言葉で書く。書き終えてから照合する。"
+  });
+  ta.value = st.input;
+  ta.addEventListener("input", function(){ st.input = ta.value; });
+  card.appendChild(ta);
+
+  if (!st.revealed){
+    var btn = el("button", { type:"button", class:"act", text:"模範要素と照合する" });
+    btn.addEventListener("click", function(){ st.revealed = true; render(); });
+    card.appendChild(el("p", { class:"hint",
+      text:"※ボタンを押すまで答えは表示されない。まず書ききること。" }));
+    card.appendChild(btn);
+    return;
+  }
+
+  var res = el("div", { class:"result" });
+  var core = q.elements.filter(function(e){ return e.core; }).length;
+  var coreDone = q.elements.filter(function(e, i){ return e.core && st.checks[i]; }).length;
+
+  res.appendChild(el("p", { class:"verdict",
+    text:"自分の答案と照合し、書けていた要素にチェックを入れる。" }));
+
+  var ul = el("ul", { class:"elements" });
+  q.elements.forEach(function(e, i){
+    var li = el("li", { class:(e.core ? "core" : "") });
+    var label = el("label");
+    var cb = el("input", { type:"checkbox" });
+    cb.checked = st.checks[i];
+    cb.addEventListener("change", function(){ st.checks[i] = cb.checked; render(); });
+    var span = el("span", { class:"etext" });
+    span.appendChild(el("span", { class:"tag", text:(e.core ? "必須" : "加点") }));
+    span.appendChild(document.createTextNode(e.text));
+    label.appendChild(cb); label.appendChild(span);
+    li.appendChild(label); ul.appendChild(li);
+  });
+  res.appendChild(ul);
+
+  var note = el("p", { class:"line-note" + (coreDone === core ? "" : " short") });
+  note.textContent = (coreDone === core)
+    ? "合格ライン到達　必須要素 " + core + " 件をすべて満たしている。"
+    : "必須要素 " + coreDone + " / " + core + " 件　（あと " + (core - coreDone) + " 件で合格ライン）";
+  res.appendChild(note);
+
+  if (q.caution) res.appendChild(renderCaution(q.caution));
+  res.appendChild(renderSource(q.source));
+  card.appendChild(res);
+}
+
+/* ---------- 計算問題 ---------- */
+function renderCalc(q, card){
+  var st = state[q.id];
+  var row = el("div", { class:"calcrow" });
+  var input = el("input", {
+    type:"text", class:"num", inputmode:"numeric", autocomplete:"off",
+    id:"in-" + q.id, "aria-label":"解答（数値）"
+  });
+  input.value = st.input;
+  var btn = el("button", { type:"button", class:"act", text:"判定する" });
+
+  function judge(){
+    st.input = input.value;
+    st.revealed = true;
+    render();
+  }
+  input.addEventListener("input", function(){ st.input = input.value; });
+  input.addEventListener("keydown", function(ev){
+    if (ev.key === "Enter"){ ev.preventDefault(); judge(); }
+  });
+  btn.addEventListener("click", judge);
+
+  row.appendChild(input);
+  row.appendChild(el("span", { class:"unit", text:(q.unit || "円") }));
+  row.appendChild(btn);
+  card.appendChild(row);
+  card.appendChild(el("p", { class:"hint",
+    text:"全角数字・桁区切りのカンマを入れてもよい。Enter キーでも判定できる。" }));
+
+  if (!st.revealed) return;
+
+  var val = parseAnswer(st.input);
+  var res = el("div", { class:"result" });
+  var v = el("p", { class:"verdict" });
+  if (val === null){
+    v.className = "verdict ng";
+    v.textContent = "数値として読み取れない　—　数字で入力すること";
+  } else if (Math.abs(val - q.answer) < 1e-9){
+    v.className = "verdict ok";
+    v.textContent = "正　解";
+  } else {
+    v.className = "verdict ng";
+    v.textContent = "誤　答　（解答 " + fmt(val) + "）";
+  }
+  res.appendChild(v);
+
+  var ab = el("div", { class:"answerbox" });
+  ab.appendChild(el("span", { class:"label", text:"正解" }));
+  ab.appendChild(el("span", { class:"val", text:fmt(q.answer) }));
+  res.appendChild(ab);
+
+  res.appendChild(el("p", { class:"work", text:q.work }));
+  if (q.caution) res.appendChild(renderCaution(q.caution));
+  res.appendChild(renderSource(q.source));
+  card.appendChild(res);
+}
+
+/* ---------- 描画 ---------- */
+function render(){
+  renderTabs();
+  renderProgress();
+  var list = qsOf(current.section);
+  if (current.index >= list.length) current.index = 0;
+  var q = list[current.index];
+  var sec = SECTIONS.filter(function(s){ return s.id === current.section; })[0];
+
+  var card = document.getElementById("card");
+  card.textContent = "";
+
+  var meta = el("div", { class:"meta" });
+  meta.appendChild(el("span", { class:"qno",
+    text:sec.id + " − " + (current.index + 1) + " ／ " + list.length }));
+  meta.appendChild(el("span", { class:"badge" + (q.type === "calc" ? " calc" : ""),
+    text:(q.type === "calc" ? "計算" : "記述") }));
+  meta.appendChild(el("span", { text:sec.name }));
+  card.appendChild(meta);
+
+  card.appendChild(el("p", { class:"q", text:q.q }));
+  if (q.table){ var t = renderTable(q.table); if (t) card.appendChild(t); }
+
+  if (q.type === "write") renderWrite(q, card);
+  else renderCalc(q, card);
+}
+
+/* ---------- ナビ ---------- */
+function move(d){
+  var list = qsOf(current.section);
+  current.index = (current.index + d + list.length) % list.length;
+  render();
+  document.getElementById("card").focus();
+}
+document.getElementById("prev").addEventListener("click", function(){ move(-1); });
+document.getElementById("next").addEventListener("click", function(){ move(1); });
+
+/* ---------- フッタ ---------- */
+(function(){
+  var w = DATA.filter(function(q){ return q.type === "write"; }).length;
+  var c = DATA.filter(function(q){ return q.type === "calc"; }).length;
+  var f = document.getElementById("foot");
+  f.appendChild(document.createTextNode(
+    "収録　記述 " + w + "問／計算 " + c + "問　計 " + DATA.length + "問。"));
+  f.appendChild(el("br"));
+  f.appendChild(document.createTextNode(
+    "設問文および採点要素は本アプリの作成者が独自に記述したものであり、会計基準等の条文本文は含まない。"));
+  f.appendChild(el("br"));
+  f.appendChild(document.createTextNode(
+    "企業会計原則・同注解／連続意見書／原価計算基準は企業会計審議会、企業会計基準第9号・第10号は企業会計基準委員会（© 公益財団法人 財務会計基準機構）による。条文は各権利者の公表物を参照すること。"));
+  f.appendChild(el("br"));
+  f.appendChild(document.createTextNode(
+    "解答の進捗はページを再読み込みすると失われる（保存機能は持たない）。"));
+})();
+
+render();
+</script>
+</body>
+</html>
